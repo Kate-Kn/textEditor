@@ -9,10 +9,16 @@ public class LeftClicked {
 		leftClicked();
 	}
 
-	private void leftClicked() {
-		StyledDocument doc = textEdit.textArea.getStyledDocument();
-		SimpleAttributeSet center = new SimpleAttributeSet();
-		StyleConstants.setAlignment(center, StyleConstants.ALIGN_LEFT);
-		doc.setParagraphAttributes(0, doc.getLength(), center, false);
+	private void leftClicked() { 
+		StyledDocument doc=textEdit.getDoc();
+	int selectionEnd = textEdit.textP.getSelectionEnd();
+	int selectionStart = textEdit.textP.getSelectionStart();
+	if (selectionStart == selectionEnd) {
+		return;
+	}
+	 SimpleAttributeSet center = new SimpleAttributeSet();
+	StyleConstants.setAlignment(center, StyleConstants.ALIGN_LEFT);
+	doc.setParagraphAttributes(selectionStart, textEdit.textP.getSelectedText().length(), center, false);
+	textEdit.textP.setDocument(doc);
 	}
 }

@@ -8,9 +8,15 @@ public class JustifyClicked  {
 		juClicked();
 	}
  private  void juClicked() {
-	 StyledDocument doc = textEdit.textArea.getStyledDocument();
-	 SimpleAttributeSet center = new SimpleAttributeSet();
-	 StyleConstants.setAlignment(center, StyleConstants.ALIGN_JUSTIFIED);
-	 doc.setParagraphAttributes(0,doc.getLength(), center, false);
+	 StyledDocument doc=textEdit.getDoc();
+		int selectionEnd = textEdit.textP.getSelectionEnd();
+		int selectionStart = textEdit.textP.getSelectionStart();
+		if (selectionStart == selectionEnd) {
+			return;
+		}
+		 SimpleAttributeSet center = new SimpleAttributeSet();
+		StyleConstants.setAlignment(center, StyleConstants.ALIGN_JUSTIFIED);
+		doc.setParagraphAttributes(selectionStart, textEdit.textP.getSelectedText().length(), center, false);
+		textEdit.textP.setDocument(doc);
 	}
 }
