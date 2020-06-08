@@ -340,7 +340,7 @@ public class textEdit extends javax.swing.JFrame {
 						if(i-1<list.size()) {
 					  doc.insertString(i-1, r.substring(i-1,i), list.get(i-1));
 						}else {
-							doc.insertString(i-1,r.substring(i-1,i),list.get(0) );
+							doc.insertString(i-1,r.substring(i-1,i),list.get(list.size()-1);
 						}
 					
 					}
